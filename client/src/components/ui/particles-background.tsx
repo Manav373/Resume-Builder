@@ -32,8 +32,8 @@ export const ParticlesBackground = () => {
         class Particle {
             x: number;
             y: number;
-            vx: number;
-            vy: number;
+            vx: number = 0;
+            vy: number = 0;
             size: number;
             color: string;
             speed: number;
@@ -66,9 +66,6 @@ export const ParticlesBackground = () => {
                 this.speed = Math.random() * 1.5 + 0.8; // Faster, snappier
                 this.trail = [];
                 this.trailLength = 20;
-
-                this.vx = 0;
-                this.vy = 0;
 
                 this.setRandomDirection();
             }
