@@ -76,7 +76,7 @@ export default function EditResumePage() {
     }
 
     return (
-        <div className="p-8 max-w-4xl mx-auto">
+        <div className="p-4 md:p-8 max-w-4xl mx-auto">
             <div className="mb-6">
                 <Button
                     variant="ghost"
@@ -87,7 +87,7 @@ export default function EditResumePage() {
                     Back to Dashboard
                 </Button>
             </div>
-            <h1 className="text-3xl font-bold mb-6">Edit Resume</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">Edit Resume</h1>
             {resumeData && <ResumeForm initialData={resumeData} resumeId={id} />}
         </div>
     );

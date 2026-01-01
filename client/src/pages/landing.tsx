@@ -92,7 +92,7 @@ export default function LandingPage() {
                                 </motion.div>
 
                                 <h1
-                                    className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl pb-2"
+                                    className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl pb-2"
                                 >
                                     <motion.span
                                         initial={{ opacity: 0, scale: 0.9, y: 30, filter: "blur(10px)" }}
@@ -133,7 +133,7 @@ export default function LandingPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2, duration: 0.5 }}
-                                    className="mx-auto max-w-2xl text-muted-foreground md:text-xl leading-relaxed"
+                                    className="mx-auto max-w-2xl text-muted-foreground text-lg md:text-xl leading-relaxed"
                                 >
                                     Stop wrestling with formatting. Let our AI writer help you describe your achievements and build a professional resume in minutes.
                                 </motion.p>

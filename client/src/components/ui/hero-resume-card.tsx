@@ -45,7 +45,7 @@ export function HeroResumeCard() {
                         </div>
 
                         {/* Resume Content */}
-                        <div className="p-8 pt-12 grid grid-cols-1 md:grid-cols-12 gap-8 h-full font-sans text-xs bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:20px_20px]">
+                        <div className="p-4 md:p-8 pt-6 md:pt-12 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 h-full font-sans text-xs bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:20px_20px]">
 
                             {/* Left Column (Sidebar) */}
                             <div

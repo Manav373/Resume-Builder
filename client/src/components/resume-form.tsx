@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { Loader2, ChevronRight, ChevronLeft, Save, Plus, Trash2, Wand2, Eye } from "lucide-react";
+import { Loader2, ChevronRight, ChevronLeft, Save, Plus, Trash2, Wand2, Eye, ArrowLeft } from "lucide-react";
 import { ResumePreview } from "@/components/resume-preview";
 
 import { useNavigate } from "react-router-dom";
@@ -155,13 +155,15 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center bg-muted/50 p-4 rounded-lg animate-in fade-in slide-in-from-top-2 duration-500">
-                <div className="flex space-x-2">
+            <div className="flex flex-col gap-3 bg-muted/50 p-4 rounded-lg animate-in fade-in slide-in-from-top-2 duration-500">
+                <div className="flex space-x-2 w-full">
                     {[1, 2, 3, 4, 5].map((i) => (
-                        <div key={i} className={`h-2 w-12 rounded-full transition-all duration-500 ease-in-out ${i <= step ? 'bg-primary scale-105' : 'bg-muted scale-100'}`} />
+                        <div key={i} className={`h-2 flex-1 rounded-full transition-all duration-500 ease-in-out ${i <= step ? 'bg-primary' : 'bg-muted-foreground/20'}`} />
                     ))}
                 </div>
-                <span className="text-sm font-medium text-muted-foreground animate-in fade-in duration-300" key={step}>Step {step} of 5</span>
+                <div className="flex justify-between items-center w-full">
+                    <span className="text-sm font-medium text-muted-foreground animate-in fade-in duration-300" key={step}>Step {step} of 5</span>
+                </div>
             </div>
 
             <Card>
@@ -596,21 +598,27 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
                             )}
                         </AnimatePresence>
 
-                        <div className="flex justify-between pt-4 border-t">
-                            <Button type="button" variant="outline" onClick={prevStep} disabled={step === 1}>
-                                <ChevronLeft className="w-4 h-4 mr-2" /> Back
-                            </Button>
+                        <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 pt-4 border-t">
+                            {step === 1 ? (
+                                <Button type="button" variant="ghost" onClick={() => navigate('/dashboard')} className="w-full sm:w-auto text-muted-foreground hover:text-foreground">
+                                    <ArrowLeft className="w-4 h-4 mr-2" /> Exit to Dashboard
+                                </Button>
+                            ) : (
+                                <Button type="button" variant="outline" onClick={prevStep} className="w-full sm:w-auto">
+                                    <ChevronLeft className="w-4 h-4 mr-2" /> Back
+                                </Button>
+                            )}
 
                             {step < 5 ? (
-                                <Button type="button" onClick={nextStep}>
+                                <Button type="button" onClick={nextStep} className="w-full sm:w-auto">
                                     Next <ChevronRight className="w-4 h-4 ml-2" />
                                 </Button>
                             ) : (
-                                <div className="flex gap-2">
-                                    <Button type="button" variant="outline" onClick={() => setShowPreview(true)}>
+                                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                    <Button type="button" variant="outline" onClick={() => setShowPreview(true)} className="w-full sm:w-auto order-2 sm:order-1">
                                         <Eye className="w-4 h-4 mr-2" /> Preview
                                     </Button>
-                                    <Button type="submit">
+                                    <Button type="submit" className="w-full sm:w-auto order-1 sm:order-2">
                                         <Save className="w-4 h-4 mr-2" /> Save Resume
                                     </Button>
                                 </div>

@@ -34,17 +34,17 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className="p-8 max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
+        <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
                     <p className="text-muted-foreground mt-1">
                         Welcome back! Ready to create something amazing?
                     </p>
                 </div>
                 <Link
                     to="/dashboard/resumes/new"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors w-full md:w-auto active:scale-95 transition-transform"
                 >
                     <Plus className="w-5 h-5" />
                     Create New

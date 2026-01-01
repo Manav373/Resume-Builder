@@ -57,16 +57,16 @@ export default function ResumesPage() {
     }
 
     return (
-        <div className="p-8 max-w-7xl mx-auto space-y-8">
-            <div className="flex justify-between items-center">
+        <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">My Resumes</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold tracking-tight">My Resumes</h1>
                     <p className="text-muted-foreground mt-1">
                         Manage and edit your created resumes.
                     </p>
                 </div>
-                <Link to="/dashboard/resumes/new">
-                    <Button>
+                <Link to="/dashboard/resumes/new" className="w-full md:w-auto">
+                    <Button className="w-full md:w-auto active:scale-95 transition-transform">
                         <Plus className="w-4 h-4 mr-2" />
                         Create New
                     </Button>
