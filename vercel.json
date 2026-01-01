@@ -1,8 +1,16 @@
 {
     "rewrites": [
         {
+            "source": "/assets/(.*)",
+            "destination": "/dist/assets/$1"
+        },
+        {
+            "source": "/favicon.ico",
+            "destination": "/dist/favicon.ico"
+        },
+        {
             "source": "/(.*)",
-            "destination": "/index.html"
+            "destination": "/dist/index.html"
         }
     ]
 }
