@@ -19,6 +19,7 @@ const generateSchema = z.object({
 
 router.post("/generate", async (req, res) => {
     try {
+        console.log(`[AI] Generating content for: ${req.body.jobTitle}`);
         const { jobTitle, currentSkills } = generateSchema.parse(req.body);
 
         const prompt = `You are an expert resume writer. Generate a professional summary and a list of 5 key skills for a "${jobTitle}".

@@ -133,8 +133,8 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
 
             toast.success("AI Magic", { description: "Content generated successfully!" });
         } catch (e) {
-            console.error(e);
-            toast.error("Error", { description: "AI Generation failed." });
+            console.error("AI Generation Error Details:", e);
+            toast.error("Error", { description: "AI Generation failed. Check console for details." });
         } finally {
             setIsGenerating(false);
         }
