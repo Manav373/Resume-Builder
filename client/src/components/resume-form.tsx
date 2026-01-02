@@ -116,7 +116,10 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
                 body: JSON.stringify({ jobTitle: title, currentSkills })
             });
 
-            if (!res.ok) throw new Error("AI request failed");
+            if (!res.ok) {
+                const errorData = await res.json().catch(() => ({}));
+                throw new Error(errorData.error || "AI request failed");
+            }
 
             const data = await res.json();
 
