@@ -27,6 +27,13 @@ app.get("/", (req, res) => {
 
 app.use("/api", routes);
 
+
+// Global error handler
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error("Unhandled Server Error:", err);
+    res.status(500).json({ error: "Internal Server Error", details: err.message });
+});
+
 const startServer = async () => {
     try {
         if (require.main === module) {
