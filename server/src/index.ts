@@ -4,6 +4,8 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 
+import routes from "./routes";
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -23,12 +25,10 @@ app.get("/", (req, res) => {
     res.send("API is running...");
 });
 
+app.use("/api", routes);
+
 const startServer = async () => {
     try {
-        // Dynamic import to ensure env vars are loaded and to catch errors
-        const { default: routes } = await import("./routes");
-        app.use("/api", routes);
-
         if (require.main === module) {
             app.listen(PORT, () => {
                 console.log(`Server is running on port ${PORT}`);
