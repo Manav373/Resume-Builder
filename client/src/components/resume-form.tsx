@@ -94,8 +94,8 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
             setIsSaved(true);
             setShowPreview(true);
         } catch (error) {
-            console.error(error);
-            toast.error("Error", { description: "Failed to save resume." });
+            console.error("Save Resume Error Details:", error);
+            toast.error("Error", { description: "Failed to save resume. Check console for details." });
         }
     };
 
