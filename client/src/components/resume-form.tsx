@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { Loader2, ChevronRight, ChevronLeft, Save, Plus, Trash2, Wand2, Eye, ArrowLeft } from "lucide-react";
 import { ResumePreview } from "@/components/resume-preview";
+import { API_URL } from "@/lib/utils";
 
 import { useNavigate } from "react-router-dom";
 
@@ -69,8 +70,8 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
             console.log("Submitting:", { ...data, userId });
 
             const url = resumeId
-                ? `http://localhost:5000/api/resumes/${resumeId}`
-                : "http://localhost:5000/api/resumes";
+                ? `${API_URL}/api/resumes/${resumeId}`
+                : `${API_URL}/api/resumes`;
 
             const method = resumeId ? "PUT" : "POST";
 
@@ -109,7 +110,7 @@ export default function ResumeForm({ initialData, resumeId }: ResumeFormProps = 
 
         setIsGenerating(true);
         try {
-            const res = await fetch("http://localhost:5000/api/ai/generate", {
+            const res = await fetch(`${API_URL}/api/ai/generate`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ jobTitle: title, currentSkills })

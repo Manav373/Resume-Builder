@@ -2,6 +2,7 @@ import { Plus, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useAppUser } from "@/components/auth-provider";
+import { API_URL } from "@/lib/utils";
 
 export default function DashboardPage() {
     const { user } = useAppUser();
@@ -12,7 +13,7 @@ export default function DashboardPage() {
             if (!user?.id) return [];
             console.log("Fetching resumes for user:", user?.id);
             try {
-                const res = await fetch(`http://localhost:5000/api/resumes?userId=${user.id}`);
+                const res = await fetch(`${API_URL}/api/resumes?userId=${user.id}`);
                 if (!res.ok) {
                     const txt = await res.text();
                     console.error("Fetch failed:", res.status, txt);

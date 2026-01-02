@@ -8,6 +8,7 @@ import { SwipeCard } from "@/components/ui/swipe-card";
 import { format } from "date-fns";
 import { useState } from "react";
 import { ResumePreview } from "@/components/resume-preview";
+import { API_URL } from "@/lib/utils";
 
 export default function ResumesPage() {
     const { user } = useAppUser();
@@ -22,7 +23,7 @@ export default function ResumesPage() {
         queryKey: ["resumes", user?.id],
         queryFn: async () => {
             if (!user?.id) return [];
-            const res = await fetch(`http://localhost:5000/api/resumes?userId=${user.id}`);
+            const res = await fetch(`${API_URL}/api/resumes?userId=${user.id}`);
             if (!res.ok) throw new Error("Failed to fetch resumes");
             return res.json();
         },
@@ -34,7 +35,7 @@ export default function ResumesPage() {
         if (!confirm("Are you sure you want to delete this resume? This action cannot be undone.")) return;
 
         try {
-            const res = await fetch(`http://localhost:5000/api/resumes/${id}`, {
+            const res = await fetch(`${API_URL}/api/resumes/${id}`, {
                 method: "DELETE",
             });
 

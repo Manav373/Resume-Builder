@@ -4,6 +4,7 @@ import ResumeForm from "@/components/resume-form";
 import { Loader2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { API_URL } from "@/lib/utils";
 
 export default function EditResumePage() {
     const { id } = useParams();
@@ -17,7 +18,7 @@ export default function EditResumePage() {
 
         const fetchResume = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/resumes/${id}`);
+                const res = await fetch(`${API_URL}/api/resumes/${id}`);
                 if (!res.ok) {
                     if (res.status === 404) throw new Error("Resume not found");
                     throw new Error("Failed to load resume");

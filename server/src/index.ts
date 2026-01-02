@@ -29,14 +29,16 @@ const startServer = async () => {
         const { default: routes } = await import("./routes");
         app.use("/api", routes);
 
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
+        if (require.main === module) {
+            app.listen(PORT, () => {
+                console.log(`Server is running on port ${PORT}`);
+            });
+        }
     } catch (error) {
         console.error("Failed to start server:", error);
-        // Keep process alive to see logs
-        setInterval(() => { }, 1000);
     }
 };
 
 startServer();
+
+export default app;
